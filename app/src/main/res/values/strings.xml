@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Chupyra_Sergij_home_task_01</string>
+    <string name="my_screen_text">my screen</string>
+    <string name="title_activity_second">Activity Two</string>
+    <string name="txtViewLogin">Login</string>
+    <string name="txtViewName">Name</string>
+    <string name="txtViewPassword">Password</string>
+    <string name="txtViewPhone">Phone</string>
+    <string name="btnLogin">Login</string>
+    <string name="btnRegistration">Registration</string>
+    <string name="btnOK">OK</string>
+    <string name="btnCancel">Cancel</string>
+    <string name="loginData">LoginData</string>
+    <string name="passwordKey">passwordKey</string>
+    <string name="nameKey">nameKey</string>
+    <string name="phoneKey">phoneKey</string>
+    <string name="loginError">Имя и(или) пароль не совпадают</string>
+    <string name="loginDataSaved">Login data were saved</string>
+    <string name="password">пароль</string>
+    <string name="phone">телефон</string>
+    <string name="name">имя</string>
+    <string name="specify">Укажите</string>
+    <string name="shift_key">5</string>
+    <string name="LoggedPageTitle">Logged as</string>
+</resources>
