@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     @Override
     protected void onStop() {
         super.onStop();
+        Toast.makeText(this, "onStop MainActivity", Toast.LENGTH_SHORT).show();
         editTextPassword.setText(null);
     }
 
@@ -97,4 +98,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         super.onRestart();
         getActiveUserData();
     }
+
+
 }
