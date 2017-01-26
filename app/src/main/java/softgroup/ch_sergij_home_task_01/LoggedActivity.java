@@ -8,7 +8,7 @@ import android.widget.Toast;
  * Created by Chupyra Sergij on 2017-01-22.
  */
 
-public class LoggedActivity extends AppCompatActivity{
+public class LoggedActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logged_page);
@@ -17,12 +17,8 @@ public class LoggedActivity extends AppCompatActivity{
         String nameKey = getResources().getString(R.string.nameKey);
         String title = getResources().getString(R.string.LoggedPageTitle) + " '";
         setTitle(title + extras.getString(nameKey) + "'");
-    }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Toast.makeText(this, "onStop LoggedActivity", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "onCreate LoggedActivity", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -38,16 +34,26 @@ public class LoggedActivity extends AppCompatActivity{
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        Toast.makeText(this, "onPause LoggedActivity", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Toast.makeText(this, "onStop LoggedActivity", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     protected void onRestart() {
         super.onRestart();
         Toast.makeText(this, "onRestart LoggedActivity", Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        Toast.makeText(this, "onPause LoggedActivity", Toast.LENGTH_SHORT).show();
+    protected void onDestroy() {
+        super.onDestroy();
+        Toast.makeText(this, "onDestroy LoggedActivity", Toast.LENGTH_SHORT).show();
     }
-
-
 }

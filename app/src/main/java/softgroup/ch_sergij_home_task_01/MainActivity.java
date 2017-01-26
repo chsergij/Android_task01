@@ -19,11 +19,8 @@ import android.content.SharedPreferences;
 public class MainActivity extends AppCompatActivity implements OnClickListener {
     private EditText editTextName;
     private EditText editTextPassword;
-    private SharedPreferences sharedPreferences;
     private String activeUserName;
     private String activeUserPassword;
-    private String nameKey;
-    private String passwordKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,34 +28,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         setContentView(R.layout.activity_main);
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
-        String loginData = getResources().getString(R.string.loginData);
-        nameKey = getResources().getString(R.string.nameKey);
-        passwordKey = getResources().getString(R.string.passwordKey);
-        sharedPreferences = getSharedPreferences(loginData, Context.MODE_PRIVATE);
-        getActiveUserData();
-    }
-
-    private void getActiveUserData() {
-        activeUserName = sharedPreferences.getString(nameKey, "");
-        editTextName.setText(activeUserName);
-        activeUserPassword = decryptPassword(sharedPreferences.getString(passwordKey, ""));
     }
 
     private boolean checkUser(String userName, String userPassword) {
         return userName.equals(activeUserName) && userPassword.equals(activeUserPassword);
-    }
-
-    private String decryptPassword(String encryptedPassword) {
-        int shift_key = R.string.shift_key;
-        char character;
-        char ch[] = new char[encryptedPassword.length()];
-        for(int i=0;i<encryptedPassword.length();i++)
-        {
-            character=encryptedPassword.charAt(i);
-            character = (char) (character - shift_key);
-            ch[i]=character;
-        }
-        return String.valueOf(ch);
     }
 
     @Override
@@ -73,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 if (checkUser(userName, userPassword)) {
                     Intent intent;
                     intent = new Intent(this, LoggedActivity.class);
-                    intent.putExtra(nameKey, userName);
+                    intent.putExtra(getResources().getString(R.string.nameKey), userName);
                     startActivity(intent);
                 } else {
                     message = getResources().getString(R.string.loginError);
@@ -87,17 +60,18 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
-        Toast.makeText(this, "onStop MainActivity", Toast.LENGTH_SHORT).show();
-        editTextPassword.setText(null);
+    protected void onResume() {
+        super.onResume();
+        MyApplication myApp = ((MyApplication) getApplicationContext());
+        activeUserName = myApp.getUserName();
+        editTextName.setText(activeUserName);
+        activeUserPassword = myApp.getUserPassword();
     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
-        getActiveUserData();
+    protected void onStop() {
+        super.onStop();
+        editTextPassword.setText(null);
     }
-
 
 }

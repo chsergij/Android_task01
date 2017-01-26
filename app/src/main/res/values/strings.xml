@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Chupyra_Sergij_home_task_01</string>
+    <string name="app_name">Chupyra_Sergij_home_task</string>
     <string name="my_screen_text">my screen</string>
     <string name="title_activity_second">Activity Two</string>
     <string name="txtViewLogin">Login</string>
@@ -22,4 +22,6 @@
     <string name="specify">Укажите</string>
     <string name="shift_key">5</string>
     <string name="LoggedPageTitle">Logged as</string>
+    <string name="fragment">Fragment</string>
+    <string name="buttonIsClicked">"Вы нажали кнопку"</string>
 </resources>
